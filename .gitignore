@@ -3,15 +3,13 @@ dist/
 build/
 .cache/
 .env*
-.vite/
-vite.config.*.timestamp-*
+.next/
 *.tsbuildinfo
 *-debug.log*
 logs/
 *.log
 .claude-replay.*
 .tmp-*
-/.tooling/design-context/
 
 # Platform-managed agentplat state, not project source. In the
 # client-initiated single-repo workspace layout the
