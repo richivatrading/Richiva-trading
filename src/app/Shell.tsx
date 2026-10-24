@@ -9,14 +9,14 @@ import { StateScreen } from './States';
 import { cn } from '../lib/format';
 
 const PAGES: Record<string, React.LazyExoticComponent<() => ReactNode>> = {
-  overview: lazy(() => import('../pages/Overview')), orders: lazy(() => import('../pages/Orders')), returns: lazy(() => import('../pages/Returns')),
-  customers: lazy(() => import('../pages/Customers')), reviews: lazy(() => import('../pages/Reviews')), support: lazy(() => import('../pages/Support')),
-  products: lazy(() => import('../pages/Products')), builder: lazy(() => import('../pages/Builder')), media: lazy(() => import('../pages/Media')),
-  inventory: lazy(() => import('../pages/Inventory')), marketing: lazy(() => import('../pages/Marketing')), notifications: lazy(() => import('../pages/Notifications')),
-  analytics: lazy(() => import('../pages/Analytics')), ai: lazy(() => import('../pages/Ai')), cms: lazy(() => import('../pages/Cms')),
-  payments: lazy(() => import('../pages/Payments')), shipping: lazy(() => import('../pages/Shipping')), risk: lazy(() => import('../pages/Risk')),
-  tryon: lazy(() => import('../pages/Tryon')), users: lazy(() => import('../pages/Users')), integrations: lazy(() => import('../pages/Integrations')),
-  privacy: lazy(() => import('../pages/Privacy')), outlets: lazy(() => import('../pages/Outlets')), settings: lazy(() => import('../pages/Settings')), profile: lazy(() => import('../pages/Profile')),
+  overview: lazy(() => import('../views/Overview')), orders: lazy(() => import('../views/Orders')), returns: lazy(() => import('../views/Returns')),
+  customers: lazy(() => import('../views/Customers')), reviews: lazy(() => import('../views/Reviews')), support: lazy(() => import('../views/Support')),
+  products: lazy(() => import('../views/Products')), builder: lazy(() => import('../views/Builder')), media: lazy(() => import('../views/Media')),
+  inventory: lazy(() => import('../views/Inventory')), marketing: lazy(() => import('../views/Marketing')), notifications: lazy(() => import('../views/Notifications')),
+  analytics: lazy(() => import('../views/Analytics')), ai: lazy(() => import('../views/Ai')), cms: lazy(() => import('../views/Cms')),
+  payments: lazy(() => import('../views/Payments')), shipping: lazy(() => import('../views/Shipping')), risk: lazy(() => import('../views/Risk')),
+  tryon: lazy(() => import('../views/Tryon')), users: lazy(() => import('../views/Users')), integrations: lazy(() => import('../views/Integrations')),
+  privacy: lazy(() => import('../views/Privacy')), outlets: lazy(() => import('../views/Outlets')), settings: lazy(() => import('../views/Settings')), profile: lazy(() => import('../views/Profile')),
 };
 
 function SidebarBody({ onNav }: { onNav?: () => void }) {

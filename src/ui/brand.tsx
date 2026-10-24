@@ -13,7 +13,7 @@ export function Logo({ className = '', inverted = false, width = 150 }: { classN
         </filter>
       </svg>
       <img
-        src={logoSrc}
+        src={logoSrc.src}
         alt="Richiva"
         draggable={false}
         className="absolute max-w-none"
