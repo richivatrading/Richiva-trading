@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from 'react';
 import { ArrowUpRight, Check, CircleAlert, Truck, PackageCheck, X as XIcon } from 'lucide-react';
 import { Avatar, Button, Card, CountUp, Drawer, Field, Label, Lightbox, Modal, Photo, Pill, Select, StatusPill, Timeline } from '../../ui/kit';
@@ -137,3 +138,4 @@ export default function ReturnDrawer({ id, onClose }: { id: string | null; onClo
 }
 
 function Rs({ v }: { v: number }) { return <CountUp value={v} format={(n) => rs(n)} duration={600} />; }
+

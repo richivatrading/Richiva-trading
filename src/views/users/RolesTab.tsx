@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { Lock, Eye, Plus, Shield } from 'lucide-react';
 import { Card, CardHeader, Switch, Button, Modal, Field, Select, Pill, Label, SaveBar, stagger } from '../../ui/kit';
@@ -79,3 +80,4 @@ export default function RolesTab() {
     </div>
   );
 }
+

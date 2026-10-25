@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useMemo, useState } from 'react';
 import { Printer, Plus } from 'lucide-react';
 import { Button, Card, Chip, DataTable, Drawer, Field, Modal, SearchInput, Select, StatusPill, Pill, cn, type Col } from './ui';
@@ -87,3 +88,4 @@ export default function Shipments({ ships, setShips, loading }: { ships: Shipmen
   );
 }
 export { eventsFor };
+

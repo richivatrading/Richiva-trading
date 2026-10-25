@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useMemo, useState } from 'react';
 import { Download } from 'lucide-react';
 import { Card, CountUp, Label, PageHeader, Select, Skeleton, Tabs, Button, useFakeLoad, stagger, C } from '../ui/kit';
@@ -98,3 +99,4 @@ export default function Payments() {
     </div>
   );
 }
+

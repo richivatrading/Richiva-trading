@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { Bell, Check, CornerDownRight, GripVertical, History, Image as ImageIcon, Megaphone, Plus, Trash2 } from 'lucide-react';
 import { Button, Card, CardHeader, Chip, Field, Label, Modal, Pill, SaveBar, Segmented, Sortable, StatusPill, Switch, stagger } from '../../ui/kit';
@@ -266,3 +267,4 @@ export function NavTab() {
   );
 }
 void Chip; void Star;
+

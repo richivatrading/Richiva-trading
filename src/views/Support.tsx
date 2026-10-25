@@ -1,3 +1,4 @@
+"use client";
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Inbox, Zap } from 'lucide-react';
 import { Avatar, Button, Card, CelebrateState, Chip, EmptyState, Modal, PageHeader, SearchInput, Skeleton, Tabs, useFakeLoad } from '../ui/kit';
@@ -148,3 +149,4 @@ export default function Support() {
     </div>
   );
 }
+

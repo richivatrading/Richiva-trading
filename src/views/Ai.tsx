@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useMemo, useState } from 'react';
 import { Area, CartesianGrid, ComposedChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Check } from 'lucide-react';
@@ -203,3 +204,4 @@ export default function Ai() {
     </div>
   );
 }
+

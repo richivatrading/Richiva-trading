@@ -1,3 +1,4 @@
+"use client";
 import { useMemo, useState } from 'react';
 import { Bar, BarChart, CartesianGrid, Cell, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Download } from 'lucide-react';
@@ -68,3 +69,4 @@ export default function Usage() {
     </div>
   );
 }
+

@@ -1,3 +1,4 @@
+"use client";
 import { useMemo, useState } from 'react';
 import { MoreHorizontal, ShieldCheck, ShieldAlert, UserPlus, KeyRound, LogOut, Ban, UserCheck, Repeat } from 'lucide-react';
 import { Card, DataTable, SearchInput, Chip, Button, Avatar, Pill, StatusPill, IconButton, DropdownMenu, Drawer, Field, Select, Modal, EmptyState, type Col, type Tone } from '../../ui/kit';
@@ -105,3 +106,4 @@ export default function UsersTab() {
     </Card>
   );
 }
+

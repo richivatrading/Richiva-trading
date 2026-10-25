@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Archive, Check, Copy, History, MoreHorizontal, RotateCcw, X } from 'lucide-react';
 import { Button, Drawer, DropdownMenu, EmptyState, IconButton, Modal, PageHeader, Progress, StatusPill, Timeline } from '../../ui/kit';
@@ -12,18 +13,6 @@ import Side from './EditorSide';
 
 /* leaving-the-page guard, survives the editor unmounting */
 type Confirm = (o: { title: string; body?: string; confirmLabel?: string; danger?: boolean }) => Promise<boolean>;
-const guard = { dirty: false, last: '', confirm: null as Confirm | null };
-if (typeof window !== 'undefined') {
-  window.addEventListener('hashchange', (e) => {
-    if (!guard.dirty || !guard.confirm) { guard.last = window.location.hash; return; }
-    const target = window.location.hash;
-    history.replaceState(null, '', guard.last || '#/products');
-    e.stopImmediatePropagation();
-    guard.confirm({ title: 'Leave without saving?', body: 'You have unsaved changes on this product. If you leave now they will be lost.', confirmLabel: 'Leave page', danger: true }).then((ok) => {
-      if (ok) { guard.dirty = false; window.location.hash = target; }
-    });
-  }, true);
-}
 
 export default function ProductEditor({ id }: { id: string }) {
   const [products] = productsStore.use();
@@ -46,14 +35,23 @@ function Editor({ id }: { id: string }) {
   const comp = useMemo(() => completeness(d), [d]);
   const vkey = isNew ? 'new' : id;
 
-  guard.confirm = confirm;
-  useEffect(() => { guard.dirty = dirty; if (dirty) guard.last = window.location.hash; }, [dirty]);
-  useEffect(() => () => { guard.dirty = false; }, []);
+  const guard = useRef({ dirty: false, last: '', confirm: null as Confirm | null });
+
   useEffect(() => {
-    if (!dirty) return;
-    const f = (e: BeforeUnloadEvent) => { e.preventDefault(); e.returnValue = ''; };
-    window.addEventListener('beforeunload', f); return () => window.removeEventListener('beforeunload', f);
-  }, [dirty]);
+    const handler = (e: HashChangeEvent) => {
+      if (!guard.current.dirty || !guard.current.confirm) { guard.current.last = window.location.hash; return; }
+      const target = window.location.hash;
+      history.replaceState(null, '', guard.current.last || '#/products');
+      e.stopImmediatePropagation();
+      guard.current.confirm({ title: 'Leave without saving?', body: 'You have unsaved changes on this product. If you leave now they will be lost.', confirmLabel: 'Leave page', danger: true }).then((ok) => {
+        if (ok) { guard.current.dirty = false; window.location.hash = target; }
+      });
+    };
+    window.addEventListener('hashchange', handler, true);
+    return () => window.removeEventListener('hashchange', handler, true);
+  }, []);
+
+  guard.current.confirm = confirm;
 
   const persist = (status: ProductStatus, label: string) => {
     const nd = { ...d, status };
@@ -61,7 +59,7 @@ function Editor({ id }: { id: string }) {
     const prod = draftToProduct(nd, status, existing, newId);
     if (isNew) addProducts([prod]); else setProducts((a) => a.map((p) => (p.id === id ? prod : p)));
     pushVersion(vkey, nd, label);
-    setD(nd); snap.current = JSON.stringify(nd); guard.dirty = false;
+    setD(nd); snap.current = JSON.stringify(nd); guard.current.dirty = false;
     if (isNew) navigate(`/products/edit/${newId}`);
   };
   const saveDraft = () => { persist(d.status === 'Published' ? 'Draft' : d.status, 'Saved draft'); toast('Draft saved', { body: d.title || 'Untitled product' }); };
@@ -81,7 +79,7 @@ function Editor({ id }: { id: string }) {
     if (isNew) return toast('Save the product first, then duplicate it');
     const n = Math.max(...products.map((p) => Number(p.id.slice(1)))) + 1;
     addProducts([{ ...draftToProduct(d, 'Draft', existing, `p${n}`), name: `${d.title} (copy)`, sku: `RV-${1000 + products.length}` }]);
-    toast('Duplicated as draft'); guard.dirty = false; snap.current = JSON.stringify(d); navigate(`/products/edit/p${n}`);
+    toast('Duplicated as draft'); guard.current.dirty = false; snap.current = JSON.stringify(d); navigate(`/products/edit/p${n}`);
   };
   const versions = getVersions(vkey, d);
   const restore = async (i: number) => {

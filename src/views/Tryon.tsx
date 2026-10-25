@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from 'react';
 import { PageHeader, Tabs, SaveBar, Skeleton, useFakeLoad, Pill } from '../ui/kit';
 import { Star } from '../ui/brand';
@@ -43,3 +44,4 @@ export default function Tryon() {
     </div>
   );
 }
+

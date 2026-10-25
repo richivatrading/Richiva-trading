@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ChevronsUp, GitMerge, Info, MessageSquareText, Paperclip, Send, StickyNote, X, CircleCheck, Undo2 } from 'lucide-react';
 import { Avatar, Button, IconButton, Pill, Switch, EmptyState } from '../../ui/kit';
@@ -96,3 +97,4 @@ export default function Chat({ t, now, typing, draft, setDraft, note, setNote, o
   );
 }
 export const NoChat = () => <div className="h-full flex items-center justify-center"><EmptyState icon={MessageSquareText} title="Pick a conversation" body="Choose one from the list to read and reply." /></div>;
+

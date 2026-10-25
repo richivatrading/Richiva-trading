@@ -1,3 +1,4 @@
+"use client";
 import { useState, type ReactNode } from 'react';
 import { ThumbsDown, ThumbsUp } from 'lucide-react';
 import { Button, Card, Switch, stagger } from '../../ui/kit';
@@ -36,3 +37,4 @@ export function AiCard({ index, title, why, enabled, onToggle, vote, onVote, onD
     </Card>
   );
 }
+

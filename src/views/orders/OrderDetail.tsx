@@ -1,3 +1,4 @@
+"use client";
 import { useMemo, useState } from 'react';
 import { ChevronDown, ChevronRight, CircleDollarSign, FileText, MoreHorizontal, PackageSearch, Send, Truck } from 'lucide-react';
 import { navigate, useApp } from '../../store';
@@ -208,3 +209,4 @@ export default function OrderDetail({ id }: { id: string }) {
     </div>
   );
 }
+

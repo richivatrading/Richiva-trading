@@ -1,3 +1,4 @@
+"use client";
 import { useMemo, useState } from 'react';
 import { CalendarDays, Check, Minus, Plus, Ruler, Scissors, X, Zap } from 'lucide-react';
 import { Button, PageHeader, Card, CardHeader, Checkbox, CountUp, EmptyState, Field, Label, Modal, Pill, Segmented, SaveBar, Skeleton, Sortable, StatusPill, Switch, Tabs, stagger, useFakeLoad } from '../ui/kit';
@@ -330,3 +331,4 @@ function Preview({ cfg, pick, setPick, calc }: { cfg: Cfg; pick: Pick; setPick: 
     </div>
   );
 }
+

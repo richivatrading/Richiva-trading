@@ -1,3 +1,4 @@
+"use client";
 import { useMemo, useState } from 'react';
 import { Box, PackageCheck } from 'lucide-react';
 import { Button, Card, Chip, DataTable, Drawer, EmptyState, KV, Pill, SearchInput, type Col } from '../../ui/kit';
@@ -75,3 +76,4 @@ export default function Pick({ loading, trigger }: { loading: boolean; trigger: 
     </>
   );
 }
+

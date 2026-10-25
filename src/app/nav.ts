@@ -47,6 +47,6 @@ export const ALL_ITEMS = [...NAV.flatMap((g) => g.items), SETTINGS_ITEM, ...HIDD
 export const canView = (role: Role, id: string) => {
   if (id === 'profile') return true;
   const it = ALL_ITEMS.find((i) => i.id === id);
-  return !it || !it.roles || it.roles.includes(role);
+  return !!it && (!it.roles || it.roles.includes(role));
 };
 export const BADGES: Record<string, number> = { orders: 12, returns: 3, reviews: 9, risk: 5, support: 4, inventory: 7 };

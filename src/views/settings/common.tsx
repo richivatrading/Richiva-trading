@@ -1,9 +1,10 @@
+"use client";
 import { useState, type ReactNode } from 'react';
 import { Check } from 'lucide-react';
 import { Button, Card, CardHeader, Field, Modal, Switch, stagger } from '../../ui/kit';
 import { cn } from '../../lib/format';
 
-export const PASSWORD = 'Richiva@2026';
+export const PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASS ?? '';
 
 export interface Hours { day: string; open: boolean; from: string; to: string }
 export interface Form {

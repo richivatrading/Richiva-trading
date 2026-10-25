@@ -1,13 +1,6 @@
-import { Star } from '../../ui/brand';
-import { Pill } from '../../ui/kit';
 import { makeStore } from '../../store';
-import { blockedCustomersStore, deletedCustomersStore, type Customer, type Tier } from '../../data/seed';
+import { blockedCustomersStore, deletedCustomersStore, type Customer } from '../../data/seed';
 import { cn } from '../../lib/format';
-
-export function TierBadge({ tier, className }: { tier: Tier; className?: string }) {
-  if (tier === 'Gold') return <span className={cn('inline-flex items-center gap-1 h-6 px-2.5 rounded-full text-[12px] font-medium bg-champagne text-white', className)}><Star size={10} />Gold</span>;
-  return <Pill tone={tier === 'Silver' ? 'champagne' : 'neutral'} className={className}>{tier}</Pill>;
-}
 
 export type EffStatus = 'Active' | 'Blocked' | 'New' | 'At risk' | 'Deleted';
 export function useEffStatus() {
@@ -24,10 +17,10 @@ export function createPrivacy(customerId: string, kind: 'Export' | 'Delete') {
   return id;
 }
 
-export const SEGMENTS = ['VIP customers', 'Festive buyers', 'Win-back: 60 days', 'New this month'];
+export const SEGMENTS = ['Festive buyers', 'Win-back: 60 days', 'New this month'];
 export const csvDownload = (rows: Customer[], name = 'customers.csv') => {
-  const head = ['Name', 'Phone', 'Email', 'City', 'Orders', 'Spent', 'Tier', 'Last order', 'Status', 'Tags'];
-  const body = rows.map((c) => [c.name, c.phone, c.email, c.city, c.orders, c.spent, c.tier, c.last, c.status, c.tags.join('|')].map((v) => `"${String(v).replace(/"/g, '""')}"`).join(','));
+  const head = ['Name', 'Phone', 'Email', 'City', 'Orders', 'Spent', 'Last order', 'Status', 'Tags'];
+  const body = rows.map((c) => [c.name, c.phone, c.email, c.city, c.orders, c.spent, c.last, c.status, c.tags.join('|')].map((v) => `"${String(v).replace(/"/g, '""')}"`).join(','));
   const url = URL.createObjectURL(new Blob([[head.join(','), ...body].join('\n')], { type: 'text/csv' }));
   const a = document.createElement('a'); a.href = url; a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(url), 500);
 };

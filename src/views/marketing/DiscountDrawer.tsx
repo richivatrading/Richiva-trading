@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from 'react';
 import { Shuffle, Zap } from 'lucide-react';
 import { Button, Drawer, Field, Label, Segmented, Switch } from '../../ui/kit';
@@ -67,3 +68,4 @@ export default function DiscountDrawer({ open, onClose, editing, flashProducts, 
     </Drawer>
   );
 }
+

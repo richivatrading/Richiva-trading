@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { Power } from 'lucide-react';
 import { Button, Card, Chip, DataTable, Drawer, EmptyState, Field, KV, Modal, Pill, Progress, SearchInput, Select, type Col } from '../../ui/kit';
@@ -107,3 +108,4 @@ function AddModal({ open, onClose, onAdd }: { open: boolean; onClose: () => void
     </Modal>
   );
 }
+

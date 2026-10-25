@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef, useState } from 'react';
 import { Bold, ImagePlus, Italic, Link2, List, Sparkles, UploadCloud, X } from 'lucide-react';
 import { Button, Card, CardHeader, CountUp, Field, Select, Sortable, Switch } from '../../ui/kit';
@@ -207,3 +208,4 @@ export function Seo({ d, set }: CP) {
     </Card>
   );
 }
+

@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from 'react';
 import { Pencil, Phone, MapPin, Trash2, Lock, Unlock } from 'lucide-react';
 import { Avatar, Button, Field, KV, Label, Progress, Select, StatusPill, Drawer } from '../../ui/kit';
@@ -60,3 +61,4 @@ export default function OutletDrawer({ outlet, onClose, onEdit, onHours, onToggl
     </Drawer>
   );
 }
+

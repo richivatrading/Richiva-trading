@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useMemo, useState } from 'react';
 import { Archive, Banknote, Coins, Globe, Mail, Receipt, ShieldAlert, ShoppingBag, Store, Truck } from 'lucide-react';
 import { Card, PageHeader, SaveBar, Skeleton, useFakeLoad } from '../ui/kit';
@@ -84,3 +85,4 @@ export default function Settings() {
     </div>
   );
 }
+

@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { ChevronDown, Download, FlaskConical, Mail, MessageCircle, RotateCw } from 'lucide-react';
 import { Button, Card, CardHeader, CelebrateState, Pill, SaveBar, StatusPill, Switch, Avatar, stagger } from '../../ui/kit';
@@ -111,3 +112,4 @@ export function AlertRules() {
     </Card>
   );
 }
+

@@ -1,3 +1,4 @@
+"use client";
 import { useMemo, useRef, useState } from 'react';
 import { Download } from 'lucide-react';
 import { Card, DataTable, SearchInput, Select, Drawer, KV, Button, Avatar, Pill, Label, EmptyState, type Col } from '../../ui/kit';
@@ -56,3 +57,4 @@ export default function AuditTab() {
     </Card>
   );
 }
+

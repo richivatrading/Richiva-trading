@@ -1,3 +1,4 @@
+"use client";
 import { useMemo, useState } from 'react';
 import { Columns3, Download, Plus, ShieldAlert, ShieldCheck, Tag, Truck, Check, Printer, FileText } from 'lucide-react';
 import { navigate, useApp, useRoute } from '../store';
@@ -135,3 +136,4 @@ function List() {
     </div>
   );
 }
+

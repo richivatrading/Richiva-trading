@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { BadgeCheck, Check, CornerDownRight, Keyboard, Settings2, Star as StarIcon, X } from 'lucide-react';
 import { Avatar, Button, Card, Checkbox, Chip, CountUp, Drawer, DropdownMenu, EmptyState, Field, IconButton, Lightbox, Modal, PageHeader, Pill, Progress, Select, Skeleton, Switch, Tabs, stagger, useFakeLoad } from '../ui/kit';
@@ -228,3 +229,4 @@ export default function Reviews() {
     </div>
   );
 }
+

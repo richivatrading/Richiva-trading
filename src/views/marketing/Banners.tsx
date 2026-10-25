@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from 'react';
 import { ImagePlus, Plus } from 'lucide-react';
 import { Button, Card, Drawer, EmptyState, Field, Label, Switch, stagger } from '../../ui/kit';
@@ -76,3 +77,4 @@ export default function Banners({ autoCreate }: { autoCreate: boolean }) {
     </div>
   );
 }
+

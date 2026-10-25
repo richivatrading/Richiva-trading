@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from 'react';
 import { Shield } from 'lucide-react';
 import { PageHeader, Tabs, Skeleton, useFakeLoad } from '../ui/kit';
@@ -26,3 +27,4 @@ export default function Users() {
     </div>
   );
 }
+

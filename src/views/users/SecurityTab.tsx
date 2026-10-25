@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { Monitor, Smartphone, LogOut } from 'lucide-react';
 import { Card, CardHeader, Switch, Select, Field, Button, Ring, SaveBar, Pill, Label, stagger } from '../../ui/kit';
@@ -68,3 +69,4 @@ export default function SecurityTab() {
     </div>
   );
 }
+

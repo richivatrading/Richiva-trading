@@ -1,9 +1,10 @@
+"use client";
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Card, CardHeader, Button, Switch, stagger } from '../../ui/kit';
 import { cn } from '../../lib/format';
 import { makeStore } from '../../store';
 
-export const PASSWORD = 'Richiva@2026';
+export const PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASS ?? '';
 export const themeModeStore = makeStore<'light' | 'dark' | 'auto'>('light');
 
 export function PCard({ id, title, sub, dirty, onSave, onReset, children, i = 0, hl, saveLabel = 'Save', valid = true }: { id: string; title: string; sub?: string; dirty: boolean; onSave: () => void; onReset?: () => void; children: ReactNode; i?: number; hl: boolean; saveLabel?: string; valid?: boolean }) {

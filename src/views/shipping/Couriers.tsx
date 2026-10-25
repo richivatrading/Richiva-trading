@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { Gauge, Pencil, PackageOpen, Plug, Zap, MapPin } from 'lucide-react';
 import { Button, Card, CardHeader, Label, Segmented, Switch, stagger } from '../../ui/kit';
@@ -71,3 +72,4 @@ export default function Couriers({ couriers, setCouriers, manual, setManual, rul
     </div>
   );
 }
+

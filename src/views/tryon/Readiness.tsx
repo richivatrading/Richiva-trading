@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Upload, Check, ImageUp } from 'lucide-react';
 import { Card, CardHeader, DataTable, StatusPill, Button, Label, Photo, SearchInput, Chip, CountUp, type Col } from '../../ui/kit';
@@ -99,3 +100,4 @@ export default function Readiness() {
     </div>
   );
 }
+

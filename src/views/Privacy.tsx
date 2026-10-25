@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { CalendarClock, Check, Clock, Download, FileLock2, ShieldCheck } from 'lucide-react';
 import { Button, PageHeader, Card, CelebrateState, DataTable, Drawer, Field, Modal, Pill, Progress, SearchInput, Skeleton, Tabs, useFakeLoad, type Col } from '../ui/kit';
@@ -194,3 +195,4 @@ export default function Privacy() {
     </div>
   );
 }
+

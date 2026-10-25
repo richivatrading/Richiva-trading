@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { Download, Check, X, Lock } from 'lucide-react';
 import { Bar, BarChart, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
@@ -94,3 +95,4 @@ export function CodCash() {
     </div>
   );
 }
+

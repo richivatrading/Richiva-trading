@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { Check, X } from 'lucide-react';
 import { Card, CardHeader, Checkbox, Field, Ring, Segmented, Select, Switch } from '../../ui/kit';
@@ -55,3 +56,4 @@ export default function Side({ d, set }: CP) {
   );
 }
 export type { Draft };
+

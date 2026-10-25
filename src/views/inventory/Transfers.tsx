@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { ArrowRight, Truck, Ban } from 'lucide-react';
 import { Button, Card, Chip, DataTable, Drawer, EmptyState, Field, KV, Modal, Pill, SearchInput, Select, type Col } from '../../ui/kit';
@@ -100,3 +101,4 @@ function NewTransfer({ open, onClose, onSave, next }: { open: boolean; onClose: 
     </Modal>
   );
 }
+

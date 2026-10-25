@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { Bell, Check, Mail, MessageCircle, Send, Smartphone } from 'lucide-react';
 import { Button, CountUp, Field, KV, Modal, Segmented, stagger } from '../../ui/kit';
@@ -138,3 +139,4 @@ export default function Wizard({ open, onClose, initialAudience, onDone }: { ope
     </Modal>
   );
 }
+

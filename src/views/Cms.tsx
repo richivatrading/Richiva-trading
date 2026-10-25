@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { FilePlus2 } from 'lucide-react';
 import { Button, Card, DataTable, EmptyState, ErrorState, Field, Modal, PageHeader, StatusPill, Tabs, useFakeLoad } from '../ui/kit';
@@ -72,3 +73,4 @@ export default function Cms() {
     </div>
   );
 }
+

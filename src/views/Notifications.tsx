@@ -1,3 +1,4 @@
+"use client";
 import { useRef, useState } from 'react';
 import { Bell, Mail, MessageCircle, RotateCw, Send, Smartphone } from 'lucide-react';
 import { Button, Card, CardHeader, Chip, CountUp, DataTable, Drawer, EmptyState, Field, KV, Modal, PageHeader, Pill, Progress, SaveBar, SearchInput, Select, Skeleton, StatusPill, Switch, Tabs, stagger, useFakeLoad } from '../ui/kit';
@@ -206,3 +207,4 @@ export default function Notifications() {
     </div>
   );
 }
+

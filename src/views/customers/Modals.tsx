@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from 'react';
 import { Mail, MessageCircle, MessageSquare, Bell } from 'lucide-react';
 import { Button, Field, Label, Modal, Segmented, Select } from '../../ui/kit';
@@ -62,3 +63,4 @@ export function AmountModal({ open, onClose, title, label = 'Amount', prefix, si
     </Modal>
   );
 }
+

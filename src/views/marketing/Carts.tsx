@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { Clock, Send } from 'lucide-react';
 import { Avatar, Button, Card, CardHeader, CountUp, Field, Pill, SaveBar, Select, StatusPill, Switch, stagger } from '../../ui/kit';
@@ -46,3 +47,4 @@ export default function Carts() {
     </div>
   );
 }
+

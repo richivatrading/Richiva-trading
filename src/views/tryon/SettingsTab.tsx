@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef, useState, type Dispatch, type SetStateAction } from 'react';
 import { Activity, Camera, Lock, Play, Check } from 'lucide-react';
 import { Card, CardHeader, Switch, Button, Field, Label, Segmented, Pill, CountUp, stagger } from '../../ui/kit';
@@ -109,3 +110,4 @@ export default function SettingsTab({ draft, setDraft }: { draft: TryonSettings;
     </div>
   );
 }
+

@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useMemo, useState } from 'react';
 import { ArrowRight, CircleCheck, Play, TriangleAlert } from 'lucide-react';
 import { Button, Card, CountUp, PageHeader, Pill, Skeleton, Tabs, stagger, useFakeLoad } from '../ui/kit';
@@ -123,3 +124,4 @@ export default function Integrations() {
     </div>
   );
 }
+

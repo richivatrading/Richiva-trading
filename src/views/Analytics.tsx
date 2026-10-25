@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useMemo, useState } from 'react';
 import { CalendarClock, ChevronDown, Download, FileText, Bookmark, Table2 } from 'lucide-react';
 import { PageHeader, Tabs, Select, Chip, Button, DropdownMenu, Modal, Field, Skeleton, ErrorState, useFakeLoad, Switch } from '../ui/kit';
@@ -92,3 +93,4 @@ function Schedule({ open, onClose, tab }: { open: boolean; onClose: () => void; 
     </Modal>
   );
 }
+

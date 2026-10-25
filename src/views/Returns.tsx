@@ -1,3 +1,4 @@
+"use client";
 import { useMemo, useState } from 'react';
 import { Settings2, LayoutGrid, Rows3, Clock } from 'lucide-react';
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, Cell } from 'recharts';
@@ -128,3 +129,4 @@ function PageHeader2({ view, setView, onRules }: { view: 'board' | 'table'; setV
     </>} />
   );
 }
+

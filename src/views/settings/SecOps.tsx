@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef, useState } from 'react';
 import { Globe, Lock, Mail, MessageSquare, RotateCw, TriangleAlert } from 'lucide-react';
 import { Button, Checkbox, ErrorState, Field, Pill, Progress, Select, Modal, KV } from '../../ui/kit';
@@ -132,3 +133,4 @@ export function DangerSection({ ask }: SecProps) {
     </>
   );
 }
+

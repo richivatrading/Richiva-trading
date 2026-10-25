@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Check, Copy, FileText, Film, FolderOpen, Grid2x2, Image as ImageIcon, List, Replace, Scissors, Sparkles, Tag, Trash2, Upload, UploadCloud } from 'lucide-react';
 import { Button, PageHeader, Card, Checkbox, Chip, DataTable, Drawer, DropdownMenu, EmptyState, ErrorState, Field, Label, Modal, Pill, Progress, SearchInput, Segmented, Select, Skeleton, stagger, useFakeLoad } from '../ui/kit';
@@ -256,3 +257,4 @@ export default function Media() {
     </div>
   );
 }
+
