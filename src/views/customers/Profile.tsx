@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useMemo, useState } from 'react';
 import { ArrowLeft, Ban, Copy, Download, MessageSquare, MoreHorizontal, PenLine, ShieldAlert, Trash2, ArrowUpRight } from 'lucide-react';
 import { Avatar, Button, Card, CountUp, EmptyState, Field, Label, Modal, Pill, Select, Skeleton, StatusPill, Tabs, stagger, useFakeLoad, DropdownMenu, IconButton } from '../../ui/kit';
@@ -7,7 +8,7 @@ import { rs } from '../../lib/format';
 import OrderDrawer from '../orders/OrderDrawer';
 import { AmountModal, MessageModal } from './Modals';
 import { TabBody, type Ctx } from './ProfileTabs';
-import { TierBadge, createPrivacy, privacyStore, redact } from './shared';
+import { createPrivacy, privacyStore, redact } from './shared';
 
 type TabId = 'Overview' | 'Orders' | 'Addresses' | 'Loyalty' | 'Try-on' | 'Reviews' | 'Notes' | 'Activity';
 const TABS: TabId[] = ['Overview', 'Orders', 'Addresses', 'Loyalty', 'Try-on', 'Reviews', 'Notes', 'Activity'];
@@ -81,9 +82,9 @@ export default function Profile({ id }: { id: string }) {
       <Card hover={false} className="mb-6">
         <div className="flex flex-wrap items-center justify-between gap-5">
           <div className="flex items-center gap-5 min-w-0">
-            <Avatar name={isDeleted ? 'X X' : c.name} size={84} ring={c.tier === 'Gold'} />
+            <Avatar name={isDeleted ? 'X X' : c.name} size={84} />
             <div className="min-w-0">
-              <div className="flex items-center gap-3 flex-wrap"><h1 className="text-[32px] font-semibold tracking-[-0.03em] leading-none">{name}</h1><TierBadge tier={c.tier} /><StatusPill status={status === 'Deleted' ? 'Archived' : status} />{status === 'Deleted' && <span className="sr-only">Deleted</span>}</div>
+              <div className="flex items-center gap-3 flex-wrap"><h1 className="text-[32px] font-semibold tracking-[-0.03em] leading-none">{name}</h1><StatusPill status={status === 'Deleted' ? 'Archived' : status} />{status === 'Deleted' && <span className="sr-only">Deleted</span>}</div>
               <div className="text-muted text-[14px] mt-2 num">{isDeleted ? `${redact(c.phone)} · ${redact(c.email)}` : `${c.phone} · ${c.email} · ${c.city}`}</div>
               <div className="flex flex-wrap gap-1.5 mt-2.5">{c.tags.map((t) => <Pill key={t} tone="champagne">{t}</Pill>)}{!c.tags.length && <span className="text-[13px] text-muted">No tags yet</span>}</div>
             </div>
@@ -123,3 +124,4 @@ export default function Profile({ id }: { id: string }) {
     </div>
   );
 }
+

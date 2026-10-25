@@ -1,10 +1,11 @@
+"use client";
 import { useEffect, useState } from 'react';
 import { Gift, MapPin, Plus, Sparkles, Timer } from 'lucide-react';
 import { Button, CountUp, DataTable, EmptyState, KV, Label, Pill, Progress, StatusPill, Timeline, Ring } from '../../ui/kit';
 import { Star as StarMark } from '../../ui/brand';
 import { rs } from '../../lib/format';
 import { PRODUCTS, type Customer, type Order } from '../../data/seed';
-import { TierBadge, redact } from './shared';
+import { redact } from './shared';
 
 export interface Ctx {
   c: Customer; name: string; isDeleted: boolean; myOrders: Order[]; openOrder: (id: string) => void; ledger: { title: string; amount: number; time: string }[];
@@ -12,7 +13,6 @@ export interface Ctx {
   activity: { title: string; meta: string }[]; patch: (p: Partial<Customer>) => void; setTab: (t: string) => void; msg: () => void;
 }
 const first = (o: Order) => PRODUCTS.find((p) => p.id === o.items[0].productId)?.name ?? 'Item';
-const NEXT: Record<string, [string, number] | null> = { Bronze: ['Silver', 35000], Silver: ['Gold', 90000], Gold: null };
 
 function OrdersTable({ ctx, limit }: { ctx: Ctx; limit?: number }) {
   const rows = limit ? ctx.myOrders.slice(0, limit) : ctx.myOrders;
@@ -29,17 +29,17 @@ function OrdersTable({ ctx, limit }: { ctx: Ctx; limit?: number }) {
 }
 
 function Loyalty({ ctx }: { ctx: Ctx }) {
-  const { c } = ctx; const nx = NEXT[c.tier]; const target = nx ? Math.min(100, (c.spent / nx[1]) * 100) : 100;
+  const { c } = ctx; const target = 100;
   const [w, setW] = useState(0); useEffect(() => { const t = setTimeout(() => setW(target), 80); return () => clearTimeout(t); }, [target]);
   const base = ctx.myOrders.slice(0, 5).map((o, i) => ({ title: `Order ${o.id}`, amount: Math.round(o.total / 100), time: o.date.split(',')[0] }));
   const rows = [...ctx.ledger, ...base, { title: 'Welcome bonus', amount: 200, time: 'Joined' }];
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-8">
       <div>
-        <div className="flex items-center gap-3 mb-1"><TierBadge tier={c.tier} /><span className="text-[14px] text-muted">{nx ? `${rs(nx[1] - c.spent > 0 ? nx[1] - c.spent : 0)} to ${nx[0]}` : 'Top tier reached'}</span></div>
+        <div className="flex items-center gap-3 mb-1"><span className="font-medium">{c.tier}</span><span className="text-[14px] text-muted">Points balance</span></div>
         <div className="text-[34px] font-semibold mt-3"><CountUp value={c.points} /> <span className="text-[14px] text-muted font-normal">points</span></div>
         <div className="mt-4"><div className="h-2 rounded-full bg-stone overflow-hidden"><div className="h-full rounded-full bg-champagne" style={{ width: `${w}%`, transition: 'width 1200ms var(--ease)' }} /></div>
-          <div className="flex justify-between text-[11px] text-muted mt-1.5"><span>{c.tier}</span><span>{nx ? nx[0] : 'Gold'}</span></div></div>
+          <div className="flex justify-between text-[11px] text-muted mt-1.5"><span>{c.tier}</span><span>{c.tier}</span></div></div>
         <div className="flex gap-2 mt-6 flex-wrap"><Button icon={Sparkles} onClick={ctx.adjustPoints}>Adjust points</Button><Button variant="secondary" icon={Gift} onClick={ctx.issueCredit}>Issue credit</Button></div>
         <div className="text-[13px] text-muted mt-3">Store credit balance: <b className="text-fg font-medium num">{rs(c.credit)}</b></div>
       </div>
@@ -52,10 +52,10 @@ function Loyalty({ ctx }: { ctx: Ctx }) {
 
 export function TabBody({ tab, ctx }: { tab: string; ctx: Ctx }) {
   const { c, isDeleted } = ctx; const pv = (s: string) => (isDeleted ? redact(s) : s);
-  if (tab === 'Overview') return (
+if (tab === 'Overview') return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
       <div><Label className="mb-2">Contact</Label>
-        <KV k="Phone"><span className="num">{pv(c.phone)}</span></KV><KV k="Email">{pv(c.email)}</KV><KV k="City">{isDeleted ? '•••••' : c.city}</KV><KV k="Last order">{c.last}</KV><KV k="Tier"><TierBadge tier={c.tier} /></KV>
+        <KV k="Phone"><span className="num">{pv(c.phone)}</span></KV><KV k="Email">{pv(c.email)}</KV><KV k="City">{isDeleted ? '•••••' : c.city}</KV><KV k="Last order">{c.last}</KV><KV k="Tier"><span className="font-medium">{c.tier}</span></KV>
         <div className="mt-5 flex gap-2"><Button variant="secondary" size="sm" disabled={isDeleted} onClick={ctx.msg}>Send message</Button><Button variant="secondary" size="sm" onClick={() => ctx.setTab('Orders')}>See all orders</Button></div></div>
       <div><Label className="mb-3">Recent orders</Label><OrdersTable ctx={ctx} limit={3} /></div>
     </div>
@@ -83,3 +83,4 @@ export function TabBody({ tab, ctx }: { tab: string; ctx: Ctx }) {
   );
   return <Timeline items={ctx.activity} />;
 }
+

@@ -1,3 +1,4 @@
+"use client";
 import { useMemo } from 'react';
 import { Bar, BarChart, CartesianGrid, Line, LineChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Card, CardHeader, ChartTip, CountUp, Label, C, stagger } from '../../ui/kit';
@@ -56,3 +57,4 @@ export default function Reports({ tickets }: { tickets: Ticket[] }) {
     </div>
   );
 }
+

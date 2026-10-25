@@ -1,3 +1,4 @@
+"use client";
 import { useRef, useState } from 'react';
 import { Upload, X } from 'lucide-react';
 import { Button, Field, Select, Switch, Pill } from '../../ui/kit';
@@ -135,3 +136,4 @@ export function CurrencySection({ form, patch }: SecProps) {
     </SettingCard>
   );
 }
+

@@ -1,3 +1,4 @@
+"use client";
 import { useRef, useState } from 'react';
 import { Camera } from 'lucide-react';
 import { Avatar, Button, Card, Modal, Pill, Ring, Skeleton, Slider, useFakeLoad } from '../ui/kit';
@@ -59,3 +60,4 @@ export default function Profile() {
     </div>
   );
 }
+

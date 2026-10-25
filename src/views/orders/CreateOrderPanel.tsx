@@ -1,3 +1,4 @@
+"use client";
 import { useMemo, useState } from 'react';
 import { Check, Minus, Plus, X } from 'lucide-react';
 import { useApp } from '../../store';
@@ -111,3 +112,4 @@ export default function CreateOrderPanel({ open, onClose, onCreated }: { open: b
     </Drawer>
   );
 }
+

@@ -1,5 +1,6 @@
+"use client";
 import { useMemo, useState } from 'react';
-import { ArrowRight, ArrowUpRight, Banknote, Boxes, CalendarDays, ChevronLeft, ChevronRight, CreditCard, ExternalLink, MessageSquare, PackageCheck, RefreshCw, Undo2 } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Banknote, CalendarDays, ChevronLeft, ChevronRight, CreditCard, ExternalLink, MessageSquare, PackageCheck, RefreshCw, Undo2 } from 'lucide-react';
 import { Button, Card, CardHeader, CountUp, Delta, EmptyState, ErrorState, Field, Modal, PageHeader, Ring, Skeleton, StatusPill, stagger, useFakeLoad } from '../ui/kit';
 import { ordersStore, PRODUCTS, photo } from '../data/seed';
 import { navigate } from '../store';
@@ -24,7 +25,6 @@ const ATTENTION = [
   { label: 'COD to verify', n: 5, icon: Banknote, to: '/risk' },
   { label: 'Returns waiting', n: 3, icon: Undo2, to: '/returns' },
   { label: 'Failed payments', n: 2, icon: CreditCard, to: '/payments?tab=transactions&status=Failed' },
-  { label: 'Low stock', n: 7, icon: Boxes, to: '/inventory?filter=Low' },
   { label: 'Reviews to approve', n: 9, icon: MessageSquare, to: '/reviews?tab=Pending' },
 ];
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -250,3 +250,4 @@ export default function Overview() {
     </div>
   );
 }
+

@@ -5,11 +5,12 @@ Next.js, React, and Tailwind CSS dashboard.
 ## Project Structure
 
 - `src/app/layout.tsx` - Root layout and document metadata
-- `src/app/[[...slug]]/page.tsx` - Dashboard route
+- `src/app/page.tsx` - Main dashboard route
+- `src/app/Auth.tsx` - Login and verification flow
 - `src/App.tsx` - Primary application component
 - `src/views/` - Dashboard pages and supporting components
 - `src/index.css` - Global styles and Tailwind CSS v4 imports
-- `package.json` - Development, build, lint, test, and formatting scripts
+- `package.json` - Development, build, lint, and formatting scripts
 - `next.config.mjs` - Next.js configuration
 - `.mise.toml` - Toolchain versions for Node.js and pnpm
 
@@ -18,7 +19,7 @@ Next.js, React, and Tailwind CSS dashboard.
 - Runtime: React 19 and React DOM 19
 - Styling: Tailwind CSS v4 with the PostCSS plugin
 - Build tooling: Next.js and TypeScript
-- Quality tools: oxfmt, oxlint, and Vitest
+- Quality tools: oxfmt and oxlint
 
 ## Styling
 

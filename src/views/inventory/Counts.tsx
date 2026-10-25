@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { Check, Plus, Send, Trash2 } from 'lucide-react';
 import { Button, Card, DataTable, Drawer, EmptyState, Field, KV, Modal, Pill, Segmented, Select, type Col } from '../../ui/kit';
@@ -166,3 +167,4 @@ function AdjustModal({ open, onClose }: { open: boolean; onClose: () => void }) 
     </Modal>
   );
 }
+

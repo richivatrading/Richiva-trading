@@ -1,3 +1,4 @@
+"use client";
 import { useState, type ReactNode } from 'react';
 import { Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Card, CardHeader, CountUp, ChartTip, Drawer, KV, Progress, Label, stagger } from '../../ui/kit';
@@ -101,3 +102,4 @@ export function DrillDrawer({ drill, onClose }: { drill: Drill | null; onClose: 
     </Drawer>
   );
 }
+

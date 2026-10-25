@@ -1,3 +1,4 @@
+"use client";
 import { useMemo, useState } from 'react';
 import { RotateCcw, Search } from 'lucide-react';
 import { Card, CardHeader, SearchInput, Avatar, Pill, Progress, Select, Field, Button, EmptyState, Label, Timeline } from '../../ui/kit';
@@ -64,3 +65,4 @@ export default function Lookup() {
     </div>
   );
 }
+

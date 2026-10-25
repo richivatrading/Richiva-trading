@@ -1,2 +1,4 @@
+# pnpm workspace configuration removed - single package project
+
 allowBuilds:
   esbuild: true

@@ -1,3 +1,4 @@
+"use client";
 import { useMemo, useState } from 'react';
 import { Calculator } from 'lucide-react';
 import { Card, CardHeader, Label, Pill, SaveBar, Select, Slider, Switch, stagger } from '../../ui/kit';
@@ -78,3 +79,4 @@ export default function Zones({ couriers }: { couriers: Courier[] }) {
     </div>
   );
 }
+

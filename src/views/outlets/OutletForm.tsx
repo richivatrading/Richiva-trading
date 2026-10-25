@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from 'react';
 import { Button, Field, Modal, Segmented, Select } from '../../ui/kit';
 import type { Outlet, OutletType } from './data';
@@ -43,3 +44,4 @@ export default function OutletForm({ open, edit, onClose, onSave }: { open: bool
     </Modal>
   );
 }
+

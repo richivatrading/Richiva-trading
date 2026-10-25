@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from 'react';
 import { Bell, Copy, Mail, MessageCircle, Plus, Smartphone, Trash2 } from 'lucide-react';
 import { Button, Card, Chip, CountUp, DataTable, Drawer, EmptyState, KV, PageHeader, Pill, SearchInput, Skeleton, StatusPill, Switch, Tabs, stagger, useFakeLoad } from '../ui/kit';
@@ -135,3 +136,4 @@ export default function Marketing() {
     </div>
   );
 }
+

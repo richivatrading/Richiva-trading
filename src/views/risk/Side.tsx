@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { Plus, Trash2 } from 'lucide-react';
 import { Button, Card, Chip, EmptyState, Field, IconButton, Segmented, Select, Switch, Tabs } from '../../ui/kit';
@@ -97,3 +98,4 @@ export default function Side() {
   );
 }
 export { Chip };
+

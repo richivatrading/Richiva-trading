@@ -1,3 +1,4 @@
+"use client";
 import { useMemo, useState } from 'react';
 import { ClipboardCheck, PackageCheck, Plus, ScanLine, Truck } from 'lucide-react';
 import { Button, Card, CountUp, PageHeader, Skeleton, Tabs, stagger, useFakeLoad } from '../ui/kit';
@@ -82,3 +83,4 @@ export default function Inventory() {
     </div>
   );
 }
+

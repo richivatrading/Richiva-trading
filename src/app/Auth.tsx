@@ -1,6 +1,7 @@
+"use client";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { ArrowLeft, Check, Copy, Download, ShieldCheck, Lock } from 'lucide-react';
-import { Logo, Leaf, Star } from '../ui/brand';
+import { Logo, Leaf } from '../ui/brand';
 import { Button, Field, Checkbox } from '../ui/kit';
 import { useApp } from '../store';
 import { photo } from '../data/seed';
@@ -44,9 +45,9 @@ function Login({ onNext }: { onNext: () => void }) {
     if (lock > 0) return;
     if (!/^\S+@\S+\.\S+$/.test(email)) return setErr('Enter a valid email address.');
     setErr(''); setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      if (email.toLowerCase() === 'owner@richiva.com' && pw === 'Richiva@2026') return onNext();
+setTimeout(() => {
+        setLoading(false);
+        if (email.toLowerCase() === process.env.NEXT_PUBLIC_ADMIN_EMAIL && pw === process.env.NEXT_PUBLIC_ADMIN_PASS) return onNext();
       const f = fails + 1; setFails(f); setShake((x) => x + 1);
       if (f >= 5) { setLock(LOCK_SECS); setErr(''); } else setErr(`Email or password is incorrect. ${5 - f} attempts left`);
     }, 900);
@@ -75,7 +76,6 @@ function Login({ onNext }: { onNext: () => void }) {
           </div>
           <div className="text-right -mt-1"><button type="button" className="text-[13px] text-muted hover:text-fg underline underline-offset-4" onClick={() => setErr('Reset link sent to owner@richiva.com')}>Forgot password?</button></div>
           <Button size="lg" className="w-full" loading={loading} type="submit">Continue</Button>
-          <div className="text-center text-[12px] text-muted">Demo: owner@richiva.com / Richiva@2026</div>
         </form>
       )}
     </div>
@@ -97,14 +97,13 @@ function Verify({ onNext, onBackToLogin, onSetup }: { onNext: () => void; onBack
   const [secs, setSecs] = useState(30);
   const [wrong, setWrong] = useState(0);
   const [shake, setShake] = useState(0);
-  const [ok, setOk] = useState(false);
   const [backup, setBackup] = useState(false);
   const [bk, setBk] = useState('');
   const [msg, setMsg] = useState('');
   const refs = useRef<(HTMLInputElement | null)[]>([]);
   useEffect(() => { const t = setInterval(() => setSecs((s) => (s <= 1 ? 30 : s - 1)), 1000); return () => clearInterval(t); }, []);
   const check = (code: string) => {
-    if (code === '123456' || (backup && code.toUpperCase() === 'RCV-8F2K-91XQ')) { setOk(true); setTimeout(onNext, 1400); return; }
+    if (code === process.env.NEXT_PUBLIC_ADMIN_2FA || (backup && code.toUpperCase() === process.env.NEXT_PUBLIC_ADMIN_BACKUP)) { onNext(); return; }
     const w = wrong + 1; setWrong(w); setShake((x) => x + 1); setDigits(Array(6).fill('')); setBk('');
     if (w >= 3) { setMsg('Too many wrong codes. Returning to login…'); setTimeout(onBackToLogin, 1300); } else { setMsg(`That code is not right. ${3 - w} tries left`); setTimeout(() => refs.current[0]?.focus(), 50); }
   };
@@ -115,20 +114,13 @@ function Verify({ onNext, onBackToLogin, onSetup }: { onNext: () => void; onBack
     if (clean && i < 5) refs.current[i + 1]?.focus();
     if (n.every(Boolean)) check(n.join(''));
   };
-  return (
+return (
     <div key={shake} className="w-full max-w-[400px] bg-card border border-line rounded-3xl p-9 shadow-[var(--shadow-lg)]" style={{ animation: shake ? 'shake 420ms var(--ease)' : 'slide-in-r 500ms var(--ease) both' }}>
-      {ok ? (
-        <div className="text-center py-8 anim-fade-in">
-          <div className="size-16 rounded-full bg-ok/15 text-ok mx-auto flex items-center justify-center"><Check size={30} strokeWidth={2} className="anim-pop" /></div>
-          <div className="font-title text-[32px] mt-4 flex items-center justify-center gap-2">Verified <Star size={20} twinkle /></div>
-        </div>
-      ) : (
-        <>
           <div className="size-11 rounded-full bg-stone flex items-center justify-center mb-4"><ShieldCheck size={20} strokeWidth={1.5} /></div>
           <h1 className="font-title text-[38px] leading-none">Enter your code</h1>
           <p className="text-muted mt-2 mb-6">Open your authenticator app and type the 6-digit code</p>
           {backup ? (
-            <Field label="Backup code" value={bk} onChange={(v) => setBk(v.toUpperCase())} autoFocus onKeyDown={(e) => e.key === 'Enter' && check(bk)} hint="Try RCV-8F2K-91XQ" />
+            <Field label="Backup code" value={bk} onChange={(v) => setBk(v.toUpperCase())} autoFocus onKeyDown={(e) => e.key === 'Enter' && check(bk)} />
           ) : (
             <div className="flex justify-center gap-2">
               {digits.map((d, i) => (
@@ -145,9 +137,6 @@ function Verify({ onNext, onBackToLogin, onSetup }: { onNext: () => void; onBack
             <button className="underline underline-offset-4 hover:text-fg" onClick={() => { setBackup(!backup); setMsg(''); }}>{backup ? 'Use authenticator code' : 'Use a backup code'}</button>
             <button className="underline underline-offset-4 hover:text-fg" onClick={onSetup}>Trouble with your code?</button>
           </div>
-          <div className="text-center text-[12px] text-muted mt-4">Demo code: 123456</div>
-        </>
-      )}
     </div>
   );
 }
@@ -156,20 +145,21 @@ function Qr() {
   const cells = useMemo(() => Array.from({ length: 29 * 29 }, (_, i) => { const x = i % 29, y = Math.floor(i / 29); const f = (x < 8 && y < 8) || (x > 20 && y < 8) || (x < 8 && y > 20); return f ? ((x % 7 === 0 || y % 7 === 0 || x === 6 || y === 6 || (x > 1 && x < 5 && y > 1 && y < 5) || (x > 22 && x < 26 && y > 1 && y < 5) || (x > 1 && x < 5 && y > 22 && y < 26)) && !(x === 7 || y === 7 || x === 21 || y === 21)) : ((x * 7 + y * 13 + x * y) % 5 < 2); }), []);
   return <svg viewBox="0 0 29 29" className="size-36 bg-white p-2 rounded-xl border border-line">{cells.map((c, i) => c && <rect key={i} x={i % 29} y={Math.floor(i / 29)} width="1" height="1" fill="#222222" />)}</svg>;
 }
-const BACKUP = ['RCV-8F2K-91XQ', 'RCV-3MPA-77DL', 'RCV-J9QW-20ZE', 'RCV-55TB-HK08', 'RCV-V2NC-6RYU', 'RCV-04XD-WQ3J', 'RCV-L8EG-MA45', 'RCV-9YHS-C1PT'];
+const BACKUP = Array.from({ length: 8 }, (_, index) => `DEMO-CODE-${String(index + 1).padStart(2, '0')}`);
 function Setup({ onNext, onBack }: { onNext: () => void; onBack: () => void }) {
   const [code, setCode] = useState(''); const [copied, setCopied] = useState(false); const [err, setErr] = useState('');
-  const key = 'RICH IVA2 0260 NEPA LADM IN77';
+  const key = 'Mock setup key - configure production 2FA on a server';
   const dl = () => { const b = new Blob([`Richiva backup codes\n\n${BACKUP.join('\n')}\n`], { type: 'text/plain' }); const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'richiva-backup-codes.txt'; a.click(); };
   return (
     <div className="w-full max-w-[460px] bg-card border border-line rounded-3xl p-8 shadow-[var(--shadow-lg)] anim-slide-in max-h-[92vh] overflow-y-auto">
       <div className="label-caps">First-time setup</div>
       <h1 className="font-title text-[36px] leading-none mt-1 mb-5">Set up your authenticator</h1>
+      <div className="text-[12px] text-muted mb-4">This setup preview uses mock data and is not a production authenticator enrollment.</div>
       <div className="flex gap-5 items-start"><Qr /><div className="min-w-0 flex-1"><div className="text-[13px] text-muted mb-1.5">Or type this key manually</div><div className="font-mono text-[12px] bg-stone rounded-lg p-2.5 break-all">{key}</div><Button size="sm" variant="secondary" className="mt-2" icon={copied ? Check : Copy} onClick={() => { navigator.clipboard?.writeText(key); setCopied(true); setTimeout(() => setCopied(false), 1500); }}>{copied ? 'Copied' : 'Copy'}</Button></div></div>
       <Field className="mt-5" label="Confirm 6-digit code" value={code} onChange={(v) => setCode(v.replace(/\D/g, '').slice(0, 6))} error={err} />
       <div className="mt-5 flex items-center justify-between"><div className="label-caps">Backup codes</div><Button size="sm" variant="ghost" icon={Download} onClick={dl}>Download</Button></div>
       <div className="grid grid-cols-2 gap-2 mt-2">{BACKUP.map((b) => <div key={b} className="font-mono text-[12px] border border-line rounded-lg px-3 py-1.5 text-center">{b}</div>)}</div>
-      <div className="flex gap-3 mt-6"><Button variant="secondary" onClick={onBack}>Back</Button><Button className="flex-1" onClick={() => (code === '123456' ? onNext() : setErr('Enter the code shown in your app (demo: 123456)'))}>Confirm and continue</Button></div>
+      <div className="flex gap-3 mt-6"><Button variant="secondary" onClick={onBack}>Back</Button><Button className="flex-1" onClick={() => (code === process.env.NEXT_PUBLIC_ADMIN_2FA ? onNext() : setErr('Enter the code shown in your app'))}>Confirm and continue</Button></div>
     </div>
   );
 }

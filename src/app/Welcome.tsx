@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { Check, PackagePlus, CreditCard, Truck, Globe } from 'lucide-react';
 import { Leaf } from '../ui/brand';
@@ -73,3 +74,4 @@ export function Tour({ onClose }: { onClose: () => void }) {
     </div>
   );
 }
+

@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from 'react';
 import { Download, Laptop, RotateCcw, Smartphone } from 'lucide-react';
 import { Button, Field, Pill, Segmented, Switch, Card, CardHeader, stagger } from '../../ui/kit';
@@ -110,3 +111,4 @@ export function SessionsCard({ hl }: P) {
   );
 }
 void Segmented; void Card; void CardHeader; void stagger;
+

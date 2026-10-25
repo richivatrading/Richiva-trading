@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from 'react';
 import { TriangleAlert } from 'lucide-react';
 import { Button, PageHeader, Tabs, useFakeLoad, Skeleton, Card } from '../ui/kit';
@@ -48,3 +49,4 @@ export default function Shipping() {
     </div>
   );
 }
+

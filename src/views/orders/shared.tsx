@@ -33,7 +33,24 @@ export const ALLOWED: Record<OrderStatus, OrderStatus[]> = {
   Returned: [],
 };
 
-export const productOf = (id: string) => PRODUCTS.find((p) => p.id === id)!;
+export const productOf = (id: string) => {
+  const product = PRODUCTS.find((p) => p.id === id);
+  return product || {
+    id,
+    name: 'Unknown Product',
+    price: 0,
+    salePrice: 0,
+    stock: 0,
+    status: 'Draft' as const,
+    mto: false,
+    updated: '',
+    photo: 0,
+    variants: [],
+    category: '',
+    collection: '',
+    sku: '',
+  };
+};
 export const unitPrice = (id: string) => { const p = productOf(id); return p.salePrice ?? p.price; };
 export const nowStamp = () => { const d = new Date(); return `${d.getDate()} Oct 2026, ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`; };
 export const nowShort = () => 'Just now';

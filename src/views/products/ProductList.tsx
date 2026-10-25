@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useMemo, useState } from 'react';
 import { Archive, ArrowUpRight, ChevronDown, Copy, Eye, EyeOff, FolderPlus, LayoutGrid, MoreHorizontal, Pencil, Percent, Rows3, Tag, Trash2 } from 'lucide-react';
 import { Button, Card, Chip, DataTable, Drawer, DropdownMenu, EmptyState, ErrorState, Field, IconButton, Lightbox, Modal, Pill, SearchInput, Segmented, Skeleton, StatusPill, stagger, useFakeLoad, type Col } from '../../ui/kit';
@@ -213,3 +214,4 @@ export default function ProductList() {
     </>
   );
 }
+

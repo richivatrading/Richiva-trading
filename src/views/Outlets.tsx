@@ -1,3 +1,4 @@
+"use client";
 import { useMemo, useState } from 'react';
 import { Plus, Store, LayoutGrid, List, Lock, Trash2, MoreHorizontal, Pencil, RotateCw, Unlock } from 'lucide-react';
 import { Button, Card, Chip, CountUp, DataTable, DropdownMenu, EmptyState, ErrorState, IconButton, Pill, PageHeader, Photo, SearchInput, Segmented, Skeleton, StatusPill, Tabs, stagger, useFakeLoad, type Col } from '../ui/kit';
@@ -141,3 +142,4 @@ export default function Outlets() {
     </div>
   );
 }
+

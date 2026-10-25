@@ -1,3 +1,4 @@
+"use client";
 import { useState, type ReactNode } from 'react';
 import { Check, CircleDollarSign, PhoneCall, PhoneOff, PhoneMissed, Truck } from 'lucide-react';
 import { useApp } from '../../store';
@@ -171,3 +172,4 @@ export function useOrderFlow(order: Order | undefined, refunded = 0) {
   );
   return { run, node, shipped, setShipped };
 }
+

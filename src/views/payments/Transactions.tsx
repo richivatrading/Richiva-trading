@@ -1,3 +1,4 @@
+"use client";
 import { useMemo, useState } from 'react';
 import { Link2, RefreshCw, Send } from 'lucide-react';
 import { Button, Card, Chip, DataTable, Drawer, KV, SearchInput, StatusPill, ErrorState, type Col } from '../../ui/kit';
@@ -74,3 +75,4 @@ export default function Transactions({ txns, setTxns, status, setStatus, maxDays
     </Card>
   );
 }
+

@@ -1,3 +1,4 @@
+"use client";
 import { useMemo, useState } from 'react';
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { RotateCw, Tag, ClipboardList } from 'lucide-react';
@@ -128,3 +129,4 @@ export default function Stock({ loading }: { loading: boolean }) {
     </div>
   );
 }
+

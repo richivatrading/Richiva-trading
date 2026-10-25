@@ -1,3 +1,4 @@
+"use client";
 import { useMemo, useState } from 'react';
 import { Ban, MessageCircle, Phone, Check, PhoneOff, X } from 'lucide-react';
 import { Avatar, Button, Card, CardHeader, CelebrateState, Drawer, ErrorState, Field, Modal, Pill, Select, Skeleton, StatusPill, Timeline, useFakeLoad } from '../../ui/kit';
@@ -129,3 +130,4 @@ export default function Queue() {
     </Card>
   );
 }
+

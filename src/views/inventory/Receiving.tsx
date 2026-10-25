@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { PackageCheck, Trash2 } from 'lucide-react';
 import { Button, Card, Chip, DataTable, Drawer, EmptyState, Field, KV, Modal, Pill, SearchInput, Select, type Col } from '../../ui/kit';
@@ -115,3 +116,4 @@ function ReceiveModal({ poId, onClose }: { poId: string | null; onClose: () => v
     </Modal>
   );
 }
+

@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { CircleCheck, MapPinned, PhoneCall, RotateCcw, Undo2 } from 'lucide-react';
 import { Button, Card, CelebrateState, Field, Modal, Pill, Select, StatusPill } from '../../ui/kit';
@@ -68,3 +69,4 @@ export default function Problems({ ships, setShips }: { ships: Shipment[]; setSh
     </div>
   );
 }
+

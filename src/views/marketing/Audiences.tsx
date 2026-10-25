@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from 'react';
 import { Plus, Trash2, Users, X } from 'lucide-react';
 import { Avatar, Button, Card, CountUp, Drawer, Field, IconButton, Segmented, Select, stagger } from '../../ui/kit';
@@ -65,3 +66,4 @@ export default function Audiences({ autoCreate, onUse }: { autoCreate: boolean; 
     </div>
   );
 }
+

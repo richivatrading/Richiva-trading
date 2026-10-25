@@ -8,7 +8,7 @@ export function makeStore<T>(initial: T) {
   let state = initial;
   const subs = new Set<() => void>();
   const get = () => state;
-  const set = (v: T | ((p: T) => T)) => { state = typeof v === 'function' ? (v as (p: T) => T)(state) : v; subs.forEach((s) => s()); };
+  const set = (v: T | ((p: T) => T)) => { state = typeof v === 'function' ? (v as (p: T) => T)(state) : v; Array.from(subs).forEach((s) => s()); };
   const sub = (f: () => void) => { subs.add(f); return () => { subs.delete(f); }; };
   const use = () => [useSyncExternalStore(sub, get, get), set] as const;
   return { get, set, use };
@@ -17,13 +17,14 @@ export function makeStore<T>(initial: T) {
 /* ---------- router (hash) ---------- */
 export interface Route { path: string[]; query: Record<string, string>; }
 const parseHash = (): Route => {
+  if (typeof window === 'undefined') return { path: [], query: {} };
   const raw = window.location.hash.replace(/^#\/?/, '');
   const [p, q = ''] = raw.split('?');
   const query: Record<string, string> = {};
   new URLSearchParams(q).forEach((v, k) => (query[k] = v));
   return { path: p.split('/').filter(Boolean), query };
 };
-export function navigate(to: string) { window.location.hash = to.startsWith('/') ? to : '/' + to; }
+export function navigate(to: string) { if (typeof window !== 'undefined') window.location.hash = to.startsWith('/') ? to : '/' + to; }
 
 /* ---------- toasts ---------- */
 interface ToastItem { id: number; title: string; body?: string; undo?: () => void; star?: boolean; }
@@ -46,15 +47,22 @@ export const useRoute = () => useApp().route;
 export function AppProvider({ children, onLogout, openPalette }: { children: ReactNode; onLogout: () => void; openPalette: () => void }) {
   const [theme, setThemeS] = useState<'light' | 'dark'>('light');
   const [role, setRole] = useState<Role>('Owner');
-  const [route, setRoute] = useState<Route>(parseHash);
+  const [route, setRoute] = useState<Route>({ path: [], query: {} });
   const [toasts, setToasts] = useState<ToastItem[]>([]);
   const [testMode, setTestMode] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const [dlg, setDlg] = useState<null | { title: string; body?: ReactNode; confirmLabel?: string; danger?: boolean; resolve: (b: boolean) => void }>(null);
   const idc = useRef(0);
+  const mounted = useRef(false);
 
   useEffect(() => { document.documentElement.classList.remove('dark'); }, []);
-  useEffect(() => { const f = () => { setRoute(parseHash()); document.getElementById('main-scroll')?.scrollTo({ top: 0 }); }; window.addEventListener('hashchange', f); return () => window.removeEventListener('hashchange', f); }, []);
+  useEffect(() => {
+    mounted.current = true;
+    setRoute(parseHash());
+    const f = () => { setRoute(parseHash()); document.getElementById('main-scroll')?.scrollTo({ top: 0 }); };
+    window.addEventListener('hashchange', f);
+    return () => window.removeEventListener('hashchange', f);
+  }, []);
 
   const toast = useCallback<AppCtx['toast']>((title, opts = {}) => {
     const id = ++idc.current;

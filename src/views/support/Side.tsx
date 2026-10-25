@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { ArrowLeft, Paperclip, Pencil, RefreshCcw, Wand2 } from 'lucide-react';
 import { Avatar, Button, DropdownMenu, Modal, Pill, Progress, Label } from '../../ui/kit';
@@ -80,3 +81,4 @@ export default function Side({ t, onAttach, onUseReply, onPriority, onBack }: { 
     </div>
   );
 }
+

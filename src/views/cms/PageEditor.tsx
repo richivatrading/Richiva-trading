@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef, useState } from 'react';
 import { ArrowDown, ArrowLeft, ArrowUp, CalendarClock, Check, Copy, GripVertical, History, Image as ImageIcon, Monitor, MousePointerClick, Redo2, Smartphone, Tablet, Trash2, Undo2, Eye, X, Plus, Wand2 } from 'lucide-react';
 import { Button, Drawer, EmptyState, Field, IconButton, Label, Modal, Pill, Progress, Ring, Segmented, StatusPill } from '../../ui/kit';
@@ -231,3 +232,4 @@ export default function PageEditor({ page, onExit }: { page: CmsPage; onExit: (p
 }
 
 export const seedBlocks = (types: BType[]) => types.map(makeBlock);
+

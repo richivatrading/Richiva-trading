@@ -1,3 +1,4 @@
+"use client";
 import { Suspense, lazy, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Bell, Command, Headphones, LogOut, Menu, Search, Settings, User, ShoppingBag, Boxes, Undo2, Activity, FlaskConical, Check } from 'lucide-react';
 import { Logo, LeafLoader, Star } from '../ui/brand';
@@ -53,14 +54,7 @@ function SidebarBody({ onNav }: { onNav?: () => void }) {
             </div>
           );
         })}
-      </nav>
-      <div className="px-4 pt-2">
-        <div className="feature rounded-[24px] p-4 text-center">
-          <div className="text-[15px] font-semibold">Low stock</div>
-          <p className="text-white/70 text-[12.5px] leading-snug mt-1">7 items are running low this week.</p>
-          <button onClick={() => go('/inventory?filter=Low')} className="mt-3 h-9 px-5 rounded-full bg-mid text-white text-[13.5px] font-medium hover:opacity-90 transition-opacity">Review stock</button>
-        </div>
-      </div>
+</nav>
       <div className="p-4 pt-3 space-y-0.5">
         {canView(role, 'settings') && <Foot icon={Settings} label="Settings" onClick={() => go('/settings')} />}
         <DropdownMenu align="left" width={230} trigger={<span className="w-full flex items-center gap-3 h-10 px-4 rounded-full text-[14px] text-fg/80 hover:bg-field hover:text-fg transition-colors cursor-pointer"><Headphones size={18} strokeWidth={1.5} />Help Center</span>}
@@ -214,3 +208,4 @@ export default function Shell() {
   );
 }
 export { Star, Tabs };
+

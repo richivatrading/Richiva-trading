@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { Card, CardHeader, CountUp, Field, Label, SaveBar, Slider, Switch } from '../../ui/kit';
 import { Star } from '../../ui/brand';
@@ -60,3 +61,4 @@ export default function Loyalty() {
     </div>
   );
 }
+

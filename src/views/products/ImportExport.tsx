@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Download, FileSpreadsheet, UploadCloud } from 'lucide-react';
 import { Button, Card, CardHeader, Progress, Segmented, Skeleton, StatusPill, Pill } from '../../ui/kit';
@@ -119,3 +120,4 @@ export default function ImportExport() {
     </div>
   );
 }
+

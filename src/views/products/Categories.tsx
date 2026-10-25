@@ -1,3 +1,4 @@
+"use client";
 import { useMemo, useState, type ReactNode } from 'react';
 import { GripVertical, MoreHorizontal, Plus, Trash2, X } from 'lucide-react';
 import { Button, Card, CardHeader, CountUp, DataTable, Drawer, DropdownMenu, EmptyState, Field, IconButton, Pill, Segmented, Select, StatusPill, Switch, useFakeLoad, Skeleton, type Col } from '../../ui/kit';
@@ -153,3 +154,4 @@ export default function Categories() {
   if (loading) return <div className="grid grid-cols-1 lg:grid-cols-2 gap-6"><Skeleton className="h-96 rounded-2xl" /><Skeleton className="h-96 rounded-2xl" /></div>;
   return <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start"><Tree /><Collections /></div>;
 }
+
